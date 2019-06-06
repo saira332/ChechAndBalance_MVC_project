@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckAndBalanceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="attendence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="aattendence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="empLogin" Relationship="Self.FK_attendence_empLogin" FromRole="attendence" ToRole="empLogin" />
+  </EntityType>
+  <EntityType Name="bill">
+    <Key>
+      <PropertyRef Name="serial_no" />
+    </Key>
+    <Property Name="serial_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_bills_customer" FromRole="bills" ToRole="customer" />
+    <NavigationProperty Name="product" Relationship="Self.FK_bills_products" FromRole="bills" ToRole="products" />
+  </EntityType>
+  <EntityType Name="booking_engine">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_booking_engine_customer" FromRole="booking_engine" ToRole="customer" />
+    <NavigationProperty Name="product" Relationship="Self.FK_booking_engine_products" FromRole="booking_engine" ToRole="products" />
+  </EntityType>
+  <EntityType Name="company_details">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact_no" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact_no" Type="Int32" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bills" Relationship="Self.FK_bills_customer" FromRole="customer" ToRole="bills" />
+    <NavigationProperty Name="booking_engine" Relationship="Self.FK_booking_engine_customer" FromRole="customer" ToRole="booking_engine" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_customer" FromRole="customer" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="empLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="attendences" Relationship="Self.FK_attendence_empLogin" FromRole="empLogin" ToRole="attendence" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="salary" Type="Int32" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact_no" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="task" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="overtime" Type="Int32" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="terminated_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CNIC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bonous" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contact_no" Type="Int32" Nullable="false" />
+    <Property Name="salary" Type="Int32" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="terminated_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CNIC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bonous" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sending_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="receving_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="no_of_order" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_orders_customer" FromRole="orders" ToRole="customer" />
+    <NavigationProperty Name="product" Relationship="Self.FK_orders_products" FromRole="orders" ToRole="products" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="total_price" Type="Int32" Nullable="false" />
+    <Property Name="discount" Type="Int32" Nullable="false" />
+    <Property Name="source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="paid_price" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="quality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="bills" Relationship="Self.FK_bills_products" FromRole="products" ToRole="bills" />
+    <NavigationProperty Name="booking_engine" Relationship="Self.FK_booking_engine_products" FromRole="products" ToRole="booking_engine" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_products" FromRole="products" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="signup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phoneNo" Type="Int32" Nullable="false" />
+    <Property Name="SecQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_attendence_empLogin">
+    <End Role="empLogin" Type="Self.empLogin" Multiplicity="1" />
+    <End Role="attendence" Type="Self.attendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empLogin">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="attendence">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bills_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="bills" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bills_products">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="bills" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_engine_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="booking_engine" Type="Self.booking_engine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking_engine">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_engine_products">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="booking_engine" Type="Self.booking_engine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="booking_engine">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_products">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckAndBalanceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="attendences" EntityType="Self.attendence" />
+    <EntitySet Name="bills" EntityType="Self.bill" />
+    <EntitySet Name="booking_engine" EntityType="Self.booking_engine" />
+    <EntitySet Name="company_details" EntityType="Self.company_details" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="empLogins" EntityType="Self.empLogin" />
+    <EntitySet Name="employees" EntityType="Self.employee" />
+    <EntitySet Name="managers" EntityType="Self.manager" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="payments" EntityType="Self.payment" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="signups" EntityType="Self.signup" />
+    <AssociationSet Name="FK_attendence_empLogin" Association="Self.FK_attendence_empLogin">
+      <End Role="empLogin" EntitySet="empLogins" />
+      <End Role="attendence" EntitySet="attendences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bills_customer" Association="Self.FK_bills_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bills_products" Association="Self.FK_bills_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_engine_customer" Association="Self.FK_booking_engine_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="booking_engine" EntitySet="booking_engine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_engine_products" Association="Self.FK_booking_engine_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="booking_engine" EntitySet="booking_engine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_customer" Association="Self.FK_orders_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_products" Association="Self.FK_orders_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

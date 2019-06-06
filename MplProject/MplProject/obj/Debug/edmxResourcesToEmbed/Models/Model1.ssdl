@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckAndBalanceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="attendence">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="aattendence" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="emp_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bills">
+    <Key>
+      <PropertyRef Name="serial_no" />
+    </Key>
+    <Property Name="serial_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cus_id" Type="int" Nullable="false" />
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="booking_engine">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="cus_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="company_details">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+    <Property Name="contact_no" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contact_no" Type="int" Nullable="false" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empLogin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar(max)" Nullable="false" />
+    <Property Name="password" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" Nullable="false" />
+    <Property Name="salary" Type="int" Nullable="false" />
+    <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="contact_no" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="task" Type="varchar(max)" Nullable="false" />
+    <Property Name="insurance" Type="varchar(max)" Nullable="false" />
+    <Property Name="overtime" Type="int" Nullable="false" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="terminated_date" Type="datetime" Nullable="false" />
+    <Property Name="CNIC" Type="varchar(max)" Nullable="false" />
+    <Property Name="bonous" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" Nullable="false" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="contact_no" Type="int" Nullable="false" />
+    <Property Name="salary" Type="int" Nullable="false" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="gender" Type="varchar(max)" Nullable="false" />
+    <Property Name="insurance" Type="varchar(max)" Nullable="false" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="terminated_date" Type="datetime" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+    <Property Name="CNIC" Type="varchar(max)" Nullable="false" />
+    <Property Name="bonous" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="varchar(max)" Nullable="false" />
+    <Property Name="order_date" Type="datetime" Nullable="false" />
+    <Property Name="sending_date" Type="datetime" Nullable="false" />
+    <Property Name="receving_date" Type="datetime" Nullable="false" />
+    <Property Name="no_of_order" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="cus_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="total_price" Type="int" Nullable="false" />
+    <Property Name="discount" Type="int" Nullable="false" />
+    <Property Name="source" Type="varchar(max)" Nullable="false" />
+    <Property Name="paid_price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_name" Type="varchar(max)" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="quality" Type="varchar(max)" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="signup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="firstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="varchar(max)" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+    <Property Name="username" Type="varchar(max)" Nullable="false" />
+    <Property Name="password" Type="varchar(max)" Nullable="false" />
+    <Property Name="phoneNo" Type="int" Nullable="false" />
+    <Property Name="SecQuestion" Type="varchar(max)" Nullable="false" />
+    <Property Name="SecAnswer" Type="varchar(max)" Nullable="false" />
+    <Property Name="status" Type="varchar(max)" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_attendence_empLogin">
+    <End Role="empLogin" Type="Self.empLogin" Multiplicity="1" />
+    <End Role="attendence" Type="Self.attendence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empLogin">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="attendence">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bills_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="bills" Type="Self.bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bills_products">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="bills" Type="Self.bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="bills">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_engine_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="booking_engine" Type="Self.booking_engine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="booking_engine">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_booking_engine_products">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="booking_engine" Type="Self.booking_engine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="booking_engine">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_products">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckAndBalanceModelStoreContainer">
+    <EntitySet Name="attendence" EntityType="Self.attendence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bills" EntityType="Self.bills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="booking_engine" EntityType="Self.booking_engine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company_details" EntityType="Self.company_details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empLogin" EntityType="Self.empLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="manager" EntityType="Self.manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="signup" EntityType="Self.signup" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_attendence_empLogin" Association="Self.FK_attendence_empLogin">
+      <End Role="empLogin" EntitySet="empLogin" />
+      <End Role="attendence" EntitySet="attendence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bills_customer" Association="Self.FK_bills_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bills_products" Association="Self.FK_bills_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="bills" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_engine_customer" Association="Self.FK_booking_engine_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="booking_engine" EntitySet="booking_engine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_booking_engine_products" Association="Self.FK_booking_engine_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="booking_engine" EntitySet="booking_engine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_customer" Association="Self.FK_orders_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_products" Association="Self.FK_orders_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

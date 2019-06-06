@@ -1,0 +1,34 @@
+﻿@model List<myFirstMVCAPP.Models.student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h1>this is new heading</h1>
+
+@for (int i = 0; i < 10; i++)
+{
+    <h5>Loop practise in MVC</h5>
+}
+
+<hr>
+
+@{var condition = true;}
+
+<li>@condition</li>
+
+@if (condition)
+{
+    <li>if-statement</li>
+}
+else
+{
+    <li>else statement</li>
+}
+
+
+@foreach(var a in Model){ 
+<li>@a.name</li>
+}
